@@ -1,0 +1,12 @@
+*.zip
+*.exe
+*.pdf
+*.txt
+*.o
+*.idea
+*.rar
+*.jpeg
+
+### Pastas de Codigo ###
+CodigosGIT/
+Aula07-TDStack/
