@@ -141,7 +141,7 @@ int TDList_insert(TDList* L, TDo* no){
 
 int Matriz_insertList(TDList* L, char **matriz, int linhas, int colunas){
 	int i , j;
-	for (i = 0; i < linhas; ++i){
+	for (i = 0; i < 1; ++i){
 		for (j = 0; j < colunas; ++j){
 			TDList_insert(L, TDo_create(matriz[i][j]));
 		}
