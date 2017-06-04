@@ -128,47 +128,47 @@ int TDList_size (TDList* L){
 
 int procurarPalavras(TDList* L, char* palavra){
 	TDo* aux = L->inicio, *aux2 = aux;
-	int i, j =, flag = 0, cont = 1, size = TDList_size(L), contC = 0, contL = 0;
+	int i, j = 0, flag = 0, cont = 1, size = TDList_size(L), sizeP = strlen(palavra), encontrada = 0;
 	while(aux){
-		for(i=0; i<strlen(palavra); ++i){
-			if(i==(strlen(palavra)-1)){
-				j = i;
-			}else{
+		for(i=0; i<sizeP; ++i){
+			if(i!=(sizeP-1)){
 				j = i+1;
+			}else{
+				j = i;
 			}
 			if(aux->info == palavra[i]){
-				if(aux->leste == palavra[j]){
+				if(aux->leste->info == palavra[j]){
 					aux = aux->leste;
 					if(i==0)flag = 1;
-					printf("1\n");
-				}else if(aux->oeste == palavra[j]){
+					if(j==i) encontrada = 1;
+				}else if(aux->oeste->info == palavra[j]){
 					aux = aux->oeste;
 					if(i==0)flag = 2;
-					printf("2\n");
-				}else if(aux->norte == palavra[j]){
+					if(j==i) encontrada = 1;
+				}else if(aux->norte->info == palavra[j]){
 					aux = aux->norte;
 					if(i==0)flag = 3;
-					printf("3\n");
-				}else if(aux->sul == palavra[j]){
+					if(j==i) encontrada = 1;
+				}else if(aux->sul->info == palavra[j]){
 					aux = aux->sul;
 					if(i==0)flag = 4;
-					printf("4\n");
-				}else if(aux->sudeste == palavra[j]){
+					if(j==i) encontrada = 1;
+				}else if(aux->sudeste->info == palavra[j]){
 					aux = aux->sudeste;
 					if(i==0)flag = 5;
-					printf("5\n");
-				}else if(aux->sudoeste == palavra[j]){
+					if(j==i) encontrada = 1;
+				}else if(aux->sudoeste->info == palavra[j]){
 					aux = aux->sudeste;
 					if(i==0)flag = 6;
-					printf("6\n");
-				}else if(aux->nordeste == palavra[j]){
+					if(j==i) encontrada = 1;
+				}else if(aux->nordeste->info == palavra[j]){
 					aux = aux->nordeste;
 					if(i==0)flag = 7;
-					printf("7\n");
-				}else if(aux->noroeste == palavra[j]){
+					if(j==i) encontrada = 1;
+				}else if(aux->noroeste->info == palavra[j]){
 					aux = aux->noroeste;
 					if(i==0)flag = 8;
-					printf("8\n");
+					if(j==i) encontrada = 1;
 				}
         	}else{
 				aux = aux->leste;
@@ -177,6 +177,9 @@ int procurarPalavras(TDList* L, char* palavra){
 		        	aux2 = aux2->sul;
 		        	cont++;
 	        	}
+			}
+			if(encontrada){
+				break;
 			}
 		}
 	}
@@ -205,9 +208,9 @@ int procurarPalavras(TDList* L, char* palavra){
     	case 8:
     		printf("Noroeste\n");
     	break;
-    	/*default:
+    	default:
     		printf("Palavra n encontrada, linha:%d\n", cont);
-    	break;*/
+    	break;
     }
     return 1;
 }
