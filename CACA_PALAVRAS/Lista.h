@@ -151,7 +151,7 @@ int procurarPalavras(TDList* L, char* palavra){
 			if(aux->oeste->info == palavra[j]){
 				int x = j;
 				while (aux->oeste->info == palavra[x] && palavra[x] != '\n'){
-					aux = aux->oeste->info;
+					aux = aux->oeste;
 					x++;
 				}
 				if(palavra[x] == '\n'){
@@ -166,7 +166,7 @@ int procurarPalavras(TDList* L, char* palavra){
 			if(aux->norte->info == palavra[j]){
 				int x = j;
 				while (aux->norte->info == palavra[x] && palavra[x] != '\n'){
-					aux = aux->norte->info;x++;
+					aux = aux->norte;x++;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
@@ -180,7 +180,7 @@ int procurarPalavras(TDList* L, char* palavra){
 			if(aux->sul->info == palavra[j]){
 				int x = j;
 				while (aux->sul->info == palavra[x] && palavra[x] != '\n'){
-					aux = aux->sul->info;x++;
+					aux = aux->sul;x++;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
@@ -193,7 +193,7 @@ int procurarPalavras(TDList* L, char* palavra){
 			if(aux->sudeste->info == palavra[j]){
 				int x = j;
 				while (aux->sudeste->info == palavra[x] && palavra[x] != '\n'){
-					aux = aux->sudeste->info;x++;
+					aux = aux->sudeste;x++;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
@@ -207,7 +207,7 @@ int procurarPalavras(TDList* L, char* palavra){
 			if(aux->sudoeste->info == palavra[j]){
 				int x = j;
 				while (aux->sudoeste->info == palavra[x] && palavra[x] != '\n'){
-					aux = aux->sudoeste->info;x++;
+					aux = aux->sudoeste;x++;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
@@ -221,7 +221,7 @@ int procurarPalavras(TDList* L, char* palavra){
 			if(aux->nordeste->info == palavra[j]){
 				int x = j;
 				while (aux->nordeste->info == palavra[x] && palavra[x] != '\n'){
-					aux = aux->nordeste->info;x++;
+					aux = aux->nordeste;x++;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
@@ -235,7 +235,7 @@ int procurarPalavras(TDList* L, char* palavra){
 			if(aux->noroeste->info == palavra[j]){
 				int x = j;
 				while (aux->noroeste->info == palavra[x] && palavra[x] != '\n'){
-					aux = aux->noroeste->info;x++;
+					aux = aux->noroeste;x++;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
