@@ -14,7 +14,7 @@ int obter_Dimensoes(int *linhas, int *colunas){
 	}
 	fclose(arq);
 	return 1;
-}
+} 
 
 char** alocar_Matriz(int l, int c){
 	char **matriz = (char**)malloc(l*sizeof(char*));
