@@ -16,5 +16,5 @@ int main(){
     TDList_print(L);
     obter_Palavra(palavra);
     procurarPalavras(L, palavra);
-	return 1;
+	return 0;
 }
