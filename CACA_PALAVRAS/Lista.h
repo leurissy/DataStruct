@@ -114,35 +114,81 @@ void TDList_print (TDList* L){
 
 int procurarPalavras(TDList* L, char* palavra){
 	TDo* aux = L->inicio, *aux2 = aux;
-	int i, flag;
-	while(aux){printf("while\n");
+	int i, flag = 0, cont = 1;
+	while(aux){
 		for(i=0; i<strlen(palavra); ++i){
 			if(aux->info == palavra[i]){
-				if(aux->leste == palavra[i]){
-					aux = aux->leste;printf("1\n");
-				}else if(aux->oeste == palavra[i]){
-					aux = aux->oeste;printf("2\n");
-				}else if(aux->norte == palavra[i]){
-					aux = aux->norte;printf("3\n");
-				}else if(aux->sul == palavra[i]){
-					aux = aux->sul;printf("4\n");
-				}else if(aux->sudeste == palavra[i]){
-					aux = aux->sudeste;printf("5\n");
-				}else if(aux->sudoeste == palavra[i]){
-					aux = aux->sudeste;printf("6\n");
-				}else if(aux->nordeste == palavra[i]){
-					aux = aux->nordeste;printf("7\n");
-				}else(aux->noroeste == palavra[i]){
-					aux = aux->noroeste;printf("8\n");
+				if(aux->leste == palavra[i+1]){
+					aux = aux->leste;
+					if(i==0)flag = 1;
+					printf("1\n");
+				}else if(aux->oeste == palavra[i+1]){
+					aux = aux->oeste;
+					if(i==0)flag = 2;
+					printf("2\n");
+				}else if(aux->norte == palavra[i+1]){
+					aux = aux->norte;
+					if(i==0)flag = 3;
+					printf("3\n");
+				}else if(aux->sul == palavra[i+1]){
+					aux = aux->sul;
+					if(i==0)flag = 4;
+					printf("4\n");
+				}else if(aux->sudeste == palavra[i+1]){
+					aux = aux->sudeste;
+					if(i==0)flag = 5;
+					printf("5\n");
+				}else if(aux->sudoeste == palavra[i+1]){
+					aux = aux->sudeste;
+					if(i==0)flag = 6;
+					printf("6\n");
+				}else if(aux->nordeste == palavra[i+1]){
+					aux = aux->nordeste;
+					if(i==0)flag = 7;
+					printf("7\n");
+				}else if(aux->noroeste == palavra[i+1]){
+					aux = aux->noroeste;
+					if(i==0)flag = 8;
+					printf("8\n");
 				}
         	}else{
 				aux = aux->leste;
 		        if(aux == NULL){
 		        	aux = aux2->sul;
 		        	aux2 = aux2->sul;
+		        	cont++;
 		        }
 			}
 		}
     }
-    printf("FOIIIIIIIIIII\n");
+    switch(flag){
+    	case 1:
+    		printf("Leste\n");
+    	break;
+    	case 2:
+    		printf("Oeste\n");
+    	break;
+    	case 3:
+    		printf("Norte\n");
+    	break;
+    	case 4:
+    		printf("Sul\n");
+    	break;
+    	case 5:
+    		printf("Suldeste\n");
+    	break;
+    	case 6:
+    		printf("Sudoeste\n");
+    	break;
+    	case 7:
+    		printf("Nordeste\n");
+    	break;
+    	case 8:
+    		printf("Noroeste\n");
+    	break;
+    	default:
+    		printf("Palavra n encontrada, linha:%d\n", cont);
+    	break;
+    }
+    return 1;
 }
