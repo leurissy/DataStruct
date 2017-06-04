@@ -30,7 +30,7 @@ TDo* TDo_create(char info){
         novo->sudeste = NULL;
         novo->sudoeste = NULL;
         novo->nordeste = NULL;
-        novo->noroeste = NULL;   
+        novo->noroeste = NULL;
         novo->info = info;
     }
     return novo;
@@ -64,14 +64,14 @@ int Matriz_insertList(TDList* L, char **matriz, int linhas, int colunas){
 		aux->leste = TDo_create(matriz[i][j]);
 		if(!aux->leste){
 			return 0;
-		} 
+		}
 		aux->leste->oeste = aux;
 		aux = aux->leste;
 	}
 	j=0;
 
 	for(i=1; i<linhas; i++){
-		aux2->sul = TDo_create(matriz[i][j]);	
+		aux2->sul = TDo_create(matriz[i][0]);
 		if(!aux2->sul){
 			return 0;
 		}
@@ -112,6 +112,37 @@ void TDList_print (TDList* L){
     }
 }
 
-int procurarPalavras(TDList* C, char* palavra){
-
+int procurarPalavras(TDList* L, char* palavra){
+	TDo* aux = L->inicio, *aux2 = aux;
+	int i, flag;
+	while(aux){printf("while\n");
+		for(i=0; i<strlen(palavra); ++i){
+			if(aux->info == palavra[i]){
+				if(aux->leste == palavra[i]){
+					aux = aux->leste;printf("1\n");
+				}else if(aux->oeste == palavra[i]){
+					aux = aux->oeste;printf("2\n");
+				}else if(aux->norte == palavra[i]){
+					aux = aux->norte;printf("3\n");
+				}else if(aux->sul == palavra[i]){
+					aux = aux->sul;printf("4\n");
+				}else if(aux->sudeste == palavra[i]){
+					aux = aux->sudeste;printf("5\n");
+				}else if(aux->sudoeste == palavra[i]){
+					aux = aux->sudeste;printf("6\n");
+				}else if(aux->nordeste == palavra[i]){
+					aux = aux->nordeste;printf("7\n");
+				}else(aux->noroeste == palavra[i]){
+					aux = aux->noroeste;printf("8\n");
+				}
+        	}else{
+				aux = aux->leste;
+		        if(aux == NULL){
+		        	aux = aux2->sul;
+		        	aux2 = aux2->sul;
+		        }
+			}
+		}
+    }
+    printf("FOIIIIIIIIIII\n");
 }

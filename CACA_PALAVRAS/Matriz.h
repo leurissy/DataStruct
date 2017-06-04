@@ -86,8 +86,7 @@ int obter_Palavra(char* palavra){
 		printf("Erro na abertura do arquivo!");
 		return 0;
 	}else{
-		fscanf(arq, "%s", &palavra);
-		printf("palavra: %s", palavra);
+		fscanf(arq, "%s", palavra);
 	}
 	fclose(arq);
 	return 1;
