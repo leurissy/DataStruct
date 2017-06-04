@@ -1,4 +1,4 @@
-typedef struct{
+typedef struct no{
 	char info;
 	struct no *oeste, *leste, *norte, *sul, *noroeste, *nordeste, *sudoeste, *sudeste;
 }TDo;
@@ -24,105 +24,14 @@ TDo* TDo_create(char info){
     if (novo){
     	int i,j;
     	novo->leste = NULL;
-		novo->oeste = NULL;
+    	novo->oeste = NULL;
+        novo->norte = NULL;
+        novo->sul = NULL;
+        novo->sudeste = NULL;
+        novo->sudoeste = NULL;
+        novo->nordeste = NULL;
+        novo->noroeste = NULL;   
         novo->info = info;
-        /*if(linha==0){//Linha 0
-        	if(coluna==0){//L 0 e C 0
-        		novo->leste = matriz[linha][coluna+1];
-        		novo->sul = matriz[linha+1][coluna];
-        		novo->sudeste = matriz[linha+1][coluna+1];
-        		novo->oeste = NULL;
-	            novo->norte = NULL;
-	            novo->sudoeste = NULL;
-	            novo->nordeste = NULL;
-	            novo->noroeste = NULL;            			
-        	}else{//Linha e Coluna !=0 
-        		if(coluna==colunas-1){//Linha 0 e Coluna -1
-        			novo->leste = NULL;
-		    		novo->sul = matriz[linha+1][coluna];
-		    		novo->sudeste = NULL;
-		    		novo->oeste = matriz[linha][coluna-1];
-		            novo->norte = NULL;
-		            novo->sudoeste = matriz[linha+1][coluna-1];
-		            novo->nordeste = NULL;
-		            novo->noroeste = NULL;
-        		}else{//Linha 0 e Coluna !=0 && -1
-        			novo->leste = matriz[linha][coluna+1];
-		    		novo->sul = matriz[linha+1][coluna];
-		    		novo->sudeste = matriz[linha+1][coluna+1];
-		    		novo->oeste = matriz[linha][coluna-1];
-		            novo->norte = NULL;
-		            novo->sudoeste = matriz[linha+1][coluna-1];
-		            novo->nordeste = NULL;
-		            novo->noroeste = NULL;
-        		}
-        	}
-        }else{//Linha !=0
-        	if(coluna==0){//Linha !=0 e Coluna 0
-        		if(linha==linhas-1){//Linha -1 e Coluna 0
-        			novo->leste = matriz[linha][coluna+1];
-		    		novo->sul = NULL;
-		    		novo->sudeste = NULL;
-		    		novo->oeste = NULL;
-		            novo->norte = matriz[linha-1][coluna];
-		            novo->sudoeste = NULL;
-		            novo->nordeste = matriz[linha-1][coluna+1];
-		            novo->noroeste = NULL;
-    			}else{//Linha !=0 && -1 e Coluna 0
-    				novo->leste = matriz[linha][coluna+1];
-            		novo->sul = matriz[linha+1][coluna];
-            		novo->sudeste = matriz[linha+1][coluna+1];
-            		novo->oeste = NULL;
-		            novo->norte = matriz[linha-1][coluna];
-		            novo->sudoeste = NULL;
-		            novo->nordeste = matriz[linha-1][coluna+1];
-		            novo->noroeste = NULL;
-        		}            			
-        	}else{//Linha !=0 e Coluna !=0
-        		if(coluna==colunas-1){//Linha !=0 e Coluna -1
-        			if(linha==linhas-1){//Linha !=0 && ==-1 e Coluna -1
-            			novo->leste = NULL;
-			    		novo->sul = matriz[linha+1][coluna];
-			    		novo->sudeste = NULL;
-			    		novo->oeste = matriz[linha][coluna-1];
-			            novo->norte = NULL;
-			            novo->sudoeste = matriz[linha+1][coluna-1];
-			            novo->nordeste = NULL;
-			            novo->noroeste = NULL;
-        			}else{//Linha !=0 e Coluna -1
-        				novo->leste = NULL;
-			    		novo->sul = matriz[linha+1][coluna];
-			    		novo->sudeste = NULL;
-			    		novo->oeste = matriz[linha][coluna-1];
-			            novo->norte = matriz[linha-1][coluna];
-			            novo->sudoeste = matriz[linha+1][coluna-1];
-			            novo->nordeste = NULL;
-			            novo->noroeste = matriz[linha-1][coluna-1];
-            		}
-        		}else{//Linha !=0 e Coluna !=0 && -1
-        			if(linha==linhas-1){//Linha !=0 && ==-1 e Coluna !=0 && -1
-            			novo->leste = matriz[linha][coluna+1];
-			    		novo->sul = NULL;
-			    		novo->sudeste = NULL;
-			    		novo->oeste = matriz[linha][coluna-1];
-			            novo->norte = matriz[linha-1][coluna];
-			            novo->sudoeste = NULL;
-			            novo->nordeste = matriz[linha-1][coluna+1];
-			            novo->noroeste = matriz[linha-1][coluna-1];
-        			}else{//Linha !=0 && -1 e Coluna !=0 && -1
-        				novo->leste = matriz[linha][coluna+1];
-			    		novo->sul = matriz[linha+1][coluna];
-			    		novo->sudeste = matriz[linha+1][coluna+1];
-			    		novo->oeste = matriz[linha][coluna-1];
-			            novo->norte = matriz[linha-1][coluna];
-			            novo->sudoeste = matriz[linha+1][coluna-1];
-			            novo->nordeste = matriz[linha-1][coluna+1];
-			            novo->noroeste = matriz[linha-1][coluna-1];
-        			}
-        			
-        		}
-        	}
-        }*/
     }
     return novo;
 }
@@ -140,20 +49,69 @@ int TDList_insert(TDList* L, TDo* no){
 }
 
 int Matriz_insertList(TDList* L, char **matriz, int linhas, int colunas){
-	int i , j;
-	for (i = 0; i < 1; ++i){
-		for (j = 0; j < colunas; ++j){
-			TDList_insert(L, TDo_create(matriz[i][j]));
-		}
+	if(L == NULL){
+		return 0;
 	}
-	return 0;
+
+	int i=0 , j=0;
+	TDo* aux, *aux2;
+
+	aux = TDo_create(matriz[i][j]);
+	TDList_insert(L, aux);
+	aux2 = aux;
+
+	for(j=1; j<colunas; j++){
+		aux->leste = TDo_create(matriz[i][j]);
+		if(!aux->leste){
+			return 0;
+		} 
+		aux->leste->oeste = aux;
+		aux = aux->leste;
+	}
+	j=0;
+
+	for(i=1; i<linhas; i++){
+		aux2->sul = TDo_create(matriz[i][j]);	
+		if(!aux2->sul){
+			return 0;
+		}
+		aux = aux2->sul;
+		aux->norte = aux2;
+
+		for(j=1; j<colunas; j++){
+			aux->leste = TDo_create(matriz[i][j]);
+			if(!aux->leste){
+				return 0;
+			}
+			aux->leste->oeste = aux;
+			aux->norte->sudeste = aux->leste;
+			aux->leste->noroeste = aux->norte;
+			aux->norte->leste->sudoeste = aux;
+			aux->nordeste = aux->norte->leste;
+			aux->norte->leste->sul = aux->leste;
+			aux->leste->norte = aux->norte->leste;
+			aux = aux->leste;
+		}
+		aux2 = aux2->sul;
+	}
+	return 1;
 }
 
 void TDList_print (TDList* L){
-    TDo* temp = L -> inicio;
+    TDo* temp = L -> inicio, *temp2 = temp;
 
-    while (temp){
-        printf("%c ", temp -> info);
-        temp = temp -> leste;
+    while(temp){
+        printf("|%c", temp -> info);
+        temp = temp->leste;
+        if(temp == NULL){
+        	printf("|");
+        	puts(" ");
+        	temp = temp2->sul;
+        	temp2 = temp2->sul;
+        }
     }
+}
+
+int procurarPalavras(TDList* C, char* palavra){
+
 }

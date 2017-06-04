@@ -13,5 +13,6 @@ int main(){
     Matriz_insertList(L, matriz, linhas, colunas);
     puts(" ");
     TDList_print(L);
-	return 0;
+    char palavra = obter_Palavra();
+	return 1;
 }

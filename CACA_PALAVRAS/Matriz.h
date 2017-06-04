@@ -13,7 +13,7 @@ int obter_Dimensoes(int *linhas, int *colunas){
 		//printf("Linhas: %d \nColunas: %d\n", *linhas, *colunas);
 	}
 	fclose(arq);
-	return 0;
+	return 1;
 }
 
 char** alocar_Matriz(int l, int c){
@@ -62,7 +62,7 @@ int preencher_Matriz(char **matriz, int linhas, int colunas){
 		}
 	}
 	fclose(arq);
-	return 0;
+	return 1;
 }
 
 void exibir_Matriz(char **matriz, int linhas, int colunas){
@@ -71,8 +71,25 @@ void exibir_Matriz(char **matriz, int linhas, int colunas){
     for(i=0 ; i < linhas ; i++){
         for(j=0 ; j < colunas ; j++){
        		printf("|%c", matriz[i][j]);
+       		if (j==colunas-1){
+       			printf("|");
+       		}
 		}
 		puts(" ");
     }
 }
 
+char obter_Palavra(){
+	FILE *arq;
+	arq = fopen("palavras.txt", "r");
+	if(arq == NULL){	//testando se o arquivo foi realmente criado
+		printf("Erro na abertura do arquivo!");
+		return 1;
+	}else{
+        char palavra[];
+		fscanf(arq, "%s", &palavra);
+		printf("palavra: %s", palavra);
+	}
+	fclose(arq);
+	return palavra;
+}
