@@ -134,8 +134,8 @@ int procurarPalavras(TDList* L, char* palavra){
 		if(aux->info == palavra[i]){
 			j = i+1;printf("A\n"); aux3 = aux;
 			if(aux3->leste->info == palavra[j]){
-				int x = j+1; printf("leste C\n");
-				while (aux3->leste->info == palavra[x] && palavra[x] != '\n'){
+				int x = j; printf("leste C\n");
+				while (aux3 && aux3->leste->info == palavra[x] && palavra[x] != '\n'){
 					aux3 = aux3->leste;("leste ...\n");
 					x++;
 				}
@@ -147,16 +147,10 @@ int procurarPalavras(TDList* L, char* palavra){
 					encontrada = 0;
 				}
 				flag = 1;
-				aux = aux->leste;
-			        if(aux == NULL){
-			        	aux = aux2->sul;
-			        	aux2 = aux2->sul;
-			        	cont++;
-			    	}
 			}
 			if(aux3->oeste->info == palavra[j]){
-				int x = j+1;printf("oeste C\n");
-				while (aux3->oeste->info == palavra[x] && palavra[x] != '\n'){
+				int x = j;printf("oeste C\n");
+				while (aux3 && aux3->oeste->info == palavra[x] && palavra[x] != '\n'){
 					aux3 = aux3->oeste;printf("oeste ...\n");
 					x++;
 				}
@@ -169,8 +163,8 @@ int procurarPalavras(TDList* L, char* palavra){
 				}
 				flag = 2;
 			}
-			if(aux3->norte->info == palavra[j]){
-				int x = j+1;printf("Norte C\n");
+			if(aux3 && aux3->norte->info == palavra[j]){
+				int x = j;printf("Norte C\n");
 				while (aux3->norte->info == palavra[x] && palavra[x] != '\n'){
 					aux3 = aux3->norte;printf("N\n");
 					x++;
@@ -184,8 +178,8 @@ int procurarPalavras(TDList* L, char* palavra){
 				}
 				flag = 3;
 			}
-			if(aux3->sul->info == palavra[j]){
-				int x = j+1;printf("Sul C\n");
+			if(aux3 && aux3->sul->info == palavra[j]){
+				int x = j;printf("Sul C\n");
 				while (aux3->sul->info == palavra[x] && palavra[x] != '\n'){
 					aux3 = aux3->sul;x++;printf("S\n");
 				}
@@ -197,8 +191,8 @@ int procurarPalavras(TDList* L, char* palavra){
 					encontrada = 0;
 				}flag = 4;
 			}
-			if(aux3->sudeste->info == palavra[j]){
-				int x = j+1;printf("sudeste C\n");
+			if(aux3 && aux3->sudeste->info == palavra[j]){
+				int x = j;printf("sudeste C\n");
 				while (aux3->sudeste->info == palavra[x] && palavra[x] != '\n'){
 					aux3 = aux3->sudeste;x++;printf("SE\n");
 				}
@@ -211,8 +205,8 @@ int procurarPalavras(TDList* L, char* palavra){
 				}
 				flag = 5;
 			}
-			if(aux3->sudoeste->info == palavra[j]){
-				int x = j+1;printf("sudoeste C\n");
+			if(aux3 && aux3->sudoeste->info == palavra[j]){
+				int x = j;printf("sudoeste C\n");
 				while (aux3->sudoeste->info == palavra[x] && palavra[x] != '\n'){
 					aux3 = aux3->sudoeste;x++;printf("SO\n");
 				}
@@ -225,8 +219,8 @@ int procurarPalavras(TDList* L, char* palavra){
 				}
 				flag = 6;
 			}
-			if(aux3->nordeste->info == palavra[j]){
-				int x = j+1;printf("Nordeste C\n");
+			if(aux3 && aux3->nordeste->info == palavra[j]){
+				int x = j;printf("Nordeste C\n");
 				while (aux3->nordeste->info == palavra[x] && palavra[x] != '\n'){
 					aux3 = aux3->nordeste;x++;printf("NO\n");
 				}
@@ -239,8 +233,8 @@ int procurarPalavras(TDList* L, char* palavra){
 				}
 				flag = 7;
 			}
-			if(aux3->noroeste->info == palavra[j]){
-				int x = j+1;printf("Noroeste C\n");
+			if(aux3 && aux3->noroeste->info == palavra[j]){
+				int x = j;printf("Noroeste C\n");
 				while (aux3->noroeste->info == palavra[x] && palavra[x] != '\n'){
 					aux3 = aux3->noroeste;x++;printf("NE\n");
 				}
@@ -253,12 +247,19 @@ int procurarPalavras(TDList* L, char* palavra){
 				}
 				flag = 8;
 			}
-    	}
-		aux = aux->leste;
-        if(aux == NULL){
-        	aux = aux2->sul;
-        	aux2 = aux2->sul;
-        	cont++;
+			aux = aux->leste;
+	        if(aux == NULL){
+	        	aux = aux2->sul;
+	        	aux2 = aux2->sul;
+	        	cont++;
+	    	}
+    	}else{
+    		aux = aux->leste;
+	        if(aux == NULL){
+	        	aux = aux2->sul;
+	        	aux2 = aux2->sul;
+	        	cont++;
+	    	}
     	}
 	    
 		if(encontrada == 1){
