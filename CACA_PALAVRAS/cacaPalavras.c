@@ -9,7 +9,6 @@ int main(){
 	obter_Dimensoes(&linhas, &colunas);
 	char **matriz = alocar_Matriz(linhas, colunas), palavra[50];
     preencher_Matriz(matriz, linhas, colunas);
-    exibir_Matriz(matriz, linhas, colunas);
     TDList* L = TDList_create();
     Matriz_insertList(L, matriz, linhas, colunas);
     puts(" ");

@@ -130,170 +130,168 @@ int procurarPalavras(TDList* L, char* palavra){
 	TDo* aux = L->inicio, *aux2 = aux, *aux3;
 	int i = 0, j, flag = 0, cont = 1, encontrada = 0;
 	while(aux){
-		printf("aux: %c\n", aux->info);
 		if(aux->info == palavra[i]){
-			j = i+1;printf("A\n"); aux3 = aux;
-			if(aux3->leste->info == palavra[j]){
-				int x = j; printf("leste C\n");
-				while (aux3 && aux3->leste->info == palavra[x] && palavra[x] != '\n'){
-					aux3 = aux3->leste;("leste ...\n");
+			j = i+1;
+			aux3 = aux;
+			if(aux3->leste && aux3->leste->info == palavra[j]){
+				int x = j;
+				while (aux3 && aux3->leste && aux3->leste->info == palavra[x] && palavra[x] != '\n'){
+					aux3 = aux3->leste;
 					x++;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
-					encontrada = 1;	
+					flag = 1;
+					encontrada = 1;	break;
 				}else{
 					//So continuo procurando
 					encontrada = 0;
-				}
-				flag = 1;
+				}	
 			}
-			if(aux3->oeste->info == palavra[j]){
-				int x = j;printf("oeste C\n");
-				while (aux3 && aux3->oeste->info == palavra[x] && palavra[x] != '\n'){
-					aux3 = aux3->oeste;printf("oeste ...\n");
+			aux3 = aux;		
+			if(aux3->oeste && aux3->oeste->info == palavra[j]){
+				int x = j;
+				while (aux3 && aux3->oeste && aux3->oeste->info == palavra[x] && palavra[x] != '\n'){
+					aux3 = aux3->oeste;
 					x++;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
-					encontrada = 1;	
+					flag = 2;
+					encontrada = 1;	break;
 				}else{
 					//So continuo procurando
 					encontrada = 0;
 				}
-				flag = 2;
 			}
-			if(aux3 && aux3->norte->info == palavra[j]){
-				int x = j;printf("Norte C\n");
-				while (aux3->norte->info == palavra[x] && palavra[x] != '\n'){
-					aux3 = aux3->norte;printf("N\n");
+			aux3 = aux;
+			if(aux3->norte && aux3->norte->info == palavra[j]){
+				int x = j;
+				while (aux3 && aux3->norte && aux3->norte->info == palavra[x] && palavra[x] != '\n'){
+					aux3 = aux3->norte;
 					x++;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
-					encontrada = 1;	
+					flag = 3;
+					encontrada = 1;	break;
 				}else{
 					//So continuo procurando
 					encontrada = 0;
 				}
-				flag = 3;
 			}
-			if(aux3 && aux3->sul->info == palavra[j]){
-				int x = j;printf("Sul C\n");
-				while (aux3->sul->info == palavra[x] && palavra[x] != '\n'){
-					aux3 = aux3->sul;x++;printf("S\n");
+			aux3 = aux;
+			if(aux3->sul && aux3->sul->info == palavra[j]){
+				int x = j;
+				while (aux3 && aux3->sul->info == palavra[x] && palavra[x] != '\n'){
+					aux3 = aux3->sul;
+					x++;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
-					encontrada = 1;	
+					flag = 4;
+					encontrada = 1;	break;
 				}else{
 					//So continuo procurando
 					encontrada = 0;
-				}flag = 4;
-			}
-			if(aux3 && aux3->sudeste->info == palavra[j]){
-				int x = j;printf("sudeste C\n");
-				while (aux3->sudeste->info == palavra[x] && palavra[x] != '\n'){
-					aux3 = aux3->sudeste;x++;printf("SE\n");
+				}
+			}aux3 = aux;
+			if(aux3->sudeste && aux3->sudeste->info == palavra[j]){
+				int x = j;
+				while (aux3 && aux3->sudeste && aux3->sudeste->info == palavra[x] && palavra[x] != '\n'){
+					aux3 = aux3->sudeste;
+					x++;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
-					encontrada = 1;	
+					flag = 5;
+					encontrada = 1;	break;
 				}else{
 					//So continuo procurando
 					encontrada = 0;
 				}
-				flag = 5;
-			}
-			if(aux3 && aux3->sudoeste->info == palavra[j]){
-				int x = j;printf("sudoeste C\n");
-				while (aux3->sudoeste->info == palavra[x] && palavra[x] != '\n'){
-					aux3 = aux3->sudoeste;x++;printf("SO\n");
+			}aux3 = aux;
+			if(aux3->sudoeste && aux3->sudoeste->info == palavra[j]){
+				int x = j;
+				while (aux3 && aux3->sudoeste && aux3->sudoeste->info == palavra[x] && palavra[x] != '\n'){
+					aux3 = aux3->sudoeste;
+					x++;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
-					encontrada = 1;	
+					flag = 6;					
+					encontrada = 1;	break;
 				}else{
 					//So continuo procurando
 					encontrada = 0;
 				}
-				flag = 6;
-			}
-			if(aux3 && aux3->nordeste->info == palavra[j]){
-				int x = j;printf("Nordeste C\n");
-				while (aux3->nordeste->info == palavra[x] && palavra[x] != '\n'){
-					aux3 = aux3->nordeste;x++;printf("NO\n");
+			}aux3 = aux;
+			if(aux3->nordeste && aux3->nordeste->info == palavra[j]){
+				int x = j;
+				while (aux3 && aux3->nordeste && aux3->nordeste->info == palavra[x] && palavra[x] != '\n'){
+					aux3 = aux3->nordeste;
+					x++;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
-					encontrada = 1;	
+					encontrada = 1;
+					flag = 7;	
+					break;
 				}else{
 					//So continuo procurando
 					encontrada = 0;
 				}
-				flag = 7;
-			}
-			if(aux3 && aux3->noroeste->info == palavra[j]){
-				int x = j;printf("Noroeste C\n");
-				while (aux3->noroeste->info == palavra[x] && palavra[x] != '\n'){
-					aux3 = aux3->noroeste;x++;printf("NE\n");
+			}aux3 = aux;
+			if(aux3->noroeste && aux3->noroeste->info == palavra[j]){
+				int x = j;
+				while (aux3 && aux3->noroeste && aux3->noroeste->info == palavra[x] && palavra[x] != '\n'){
+					x++;
+					aux3 = aux3->noroeste;
 				}
 				if(palavra[x] == '\n'){
 					//Encontrei palavra
-					encontrada = 1;	
+					flag = 8;
+					encontrada = 1;	break;
 				}else{
 					//So continuo procurando
 					encontrada = 0;
 				}
-				flag = 8;
 			}
-			aux = aux->leste;
-	        if(aux == NULL){
-	        	aux = aux2->sul;
-	        	aux2 = aux2->sul;
-	        	cont++;
-	    	}
-    	}else{
-    		aux = aux->leste;
-	        if(aux == NULL){
-	        	aux = aux2->sul;
-	        	aux2 = aux2->sul;
-	        	cont++;
-	    	}
     	}
-	    
-		if(encontrada == 1){
-			break;
-		}
+		aux = aux->leste;
+        if(aux == NULL){
+        	aux = aux2->sul;
+        	aux2 = aux2->sul;
+    	}
 	}
 	printf("Palavra: %s\n", palavra);
     switch(flag){
     	case 1:
-    		printf("Leste\n");
+    		printf("Direcao: Leste\nLinha: %d", cont);
     	break;
     	case 2:
-    		printf("Oeste\n");
+    		printf("Direcao: Oeste\nLinha: %d", cont);
     	break;
     	case 3:
-    		printf("Norte\n");
+    		printf("Norte\nLinha: %d", cont);
     	break;
     	case 4:
-    		printf("Sul\n");
+    		printf("Sul\nLinha: %d", cont);
     	break;
     	case 5:
-    		printf("Suldeste\n");
+    		printf("Suldeste\nLinha: %d", cont);
     	break;
     	case 6:
-    		printf("Sudoeste\n");
+    		printf("Sudoeste\nLinha: %d", cont);
     	break;
     	case 7:
-    		printf("Nordeste\n");
+    		printf("Nordeste\nLinha: %d", cont);
     	break;
     	case 8:
-    		printf("Noroeste\n");
+    		printf("Noroeste\nLinha: %d", cont);
     	break;
     	default:
-    		printf("Palavra n encontrada, linha:%d\n", cont);
+    		printf("Palavra n encontrada\n");
     	break;
     }
     return 1;
